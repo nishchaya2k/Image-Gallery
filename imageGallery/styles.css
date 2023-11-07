@@ -1,0 +1,93 @@
+* {
+  margin:0;
+  padding:0;
+/* border box means content will shrink not container if padding or margin added */
+  box-sizing:border-box;
+}
+
+#wrapper{
+  height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+ .container{
+  height:100%;   /* height 100% means equall to view port 100vh as in wrapper */
+  max-width:1200px;    /* decided width */
+  margin:0 auto;      /* to place content in center my making it 0 and auto */
+  padding:20px;
+  /* background-color: black; */
+  
+}
+
+.container h1{
+  margin: 20px 100px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 3rem;
+}
+
+.gallery{
+  display: flex;
+   /*In one particular row n no. of items should there others will shift to next line*/
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+.card {
+  width:32%;
+  position:relative;    /* to do overlapping of image text on it*/ 
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;    /* to control image overflowing*/
+}
+ 
+.card img{ 
+  /*the image part which disappear becoz of overflow control will not appear */
+  width:100%;        
+  height:100%;
+  /* for black and white of image */
+  filter: grayscale(100%);
+  box-shadow: 0 0 20px #333;
+  /* not important ,but its use is, image stretch itself to cover the vacant space*/
+  object-fit: cover; 
+}
+
+
+.card:hover {
+  /* scale increase size if we hover it */
+  transform: scale(1.03);
+  /* time to scale */
+  transition: 0.5s;
+  /* when we hover it drop shadow */
+  filter: drop-shadow(0 0 10px #333);
+}
+
+/* color will retain if we hover */
+.card:hover img {
+  filter: grayscale(0%);
+}
+
+.card figcaption{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 25px;
+  width: 100%;
+  height: 20%;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  /* tranparency full 100%, text wont visible */
+  opacity: 0;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  transition: 0.3s;
+}
+
+/* text visible when hover */
+.card:hover figcaption {
+  opacity: 1;
+  transform: scale(1.03);
+}   
